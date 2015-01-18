@@ -11,7 +11,7 @@ if( !isset($_GET["state"])||empty($_GET["state"])||!isset($_GET["code"])||empty(
 else
 {
 	//参数验证
-	if( $_GET["state"]!=$_SESSION["tb_state"] )
+	if( $_GET["state"] != ISession::get('tb_state') )
 	{
 		//echo "网站获取用于第三方应用防止CSRF攻击失败。";
 		echo "<span style='font-size:12px;line-height:24px;'>请求非法或超时!&nbsp;&nbsp;<a href='/index.php'>返回首页</a></span>";
@@ -33,7 +33,7 @@ else
 	
 	$token = json_decode ( curl ( $url, $postfields ) );
 	$access_token = $token->access_token;
-	$_SESSION['tb_access_token'] = $access_token;
+	ISession::set('tb_access_token', $access_token);
 
 	//保存用户信息
 	$user_info['user_id'] = $token -> taobao_user_id;
@@ -42,7 +42,7 @@ else
 	$user_info['user_profile'] = "";
 	$user_info['user_token'] = $token -> access_token;
 	$user_info['user_type'] = "taobao";
-	$_SESSION['user_info'] = $user_info;
+	ISession::set('user_info', $user_info);
 	
 	$uname = $token -> taobao_user_nick;
 	$openid = $token -> taobao_user_id;

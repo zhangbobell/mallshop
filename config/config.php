@@ -32,5 +32,8 @@ return array(
 	'debug'=> false,
 	'configExt'=> array('site_config'=>'config/site_config.php'),
 	'encryptKey'=>'94d7265c2c9e4e679a909cc697f875cf',
+	'tb_appid'=>'1021786881',
+	'tb_appkey'=>'sandboxb7688b3367451ddc8ea81d44b',
+	'tb_callback_url'=>'http://mallshop.zhangbobell.cn/index.php?controller=publish&action=tb_oauth_cb'
 );
 ?>
